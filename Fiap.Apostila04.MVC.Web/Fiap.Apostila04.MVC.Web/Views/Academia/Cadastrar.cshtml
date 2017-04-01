@@ -1,0 +1,43 @@
+﻿@model Fiap.Apostila04.MVC.Web.Models.Academia
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastrar</h2>
+
+@if (TempData["mensagem"] != null)
+{
+    @NossoHelper.Mensagem(TempData["mensagem"] as string, "success")
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(a => a.Nome)
+        @Html.TextBoxFor(academia => academia.Nome, new { @class="form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.Cnpj)
+        @Html.TextBoxFor(gustavo => gustavo.Cnpj, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.NumeroAlunos)
+        @Html.TextBoxFor(a => a.NumeroAlunos, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.DataInscricao)
+        @Html.TextBoxFor(a => a.DataInscricao, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.CheckBoxFor(c => c.Piscina)
+        @Html.LabelFor(c => c.Piscina)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Plano)
+        @Html.DropDownListFor(c => c.Plano, ViewBag.opcoes as SelectList, 
+                                                new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @NossoHelper.Botao("Salvar")
+    </div>
+}
