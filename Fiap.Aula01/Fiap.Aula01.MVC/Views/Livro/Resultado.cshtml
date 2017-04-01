@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Resultado";
+}
+
+<h2>Resultado</h2>
+
+<div class="alert alert-success">
+    @TempData["mensagem"]
+</div>
+<div>
+    <h3>@ViewBag.livro.Titulo, R$ @ViewBag.livro.Preco</h3>
+    <p>@ViewBag.livro.DataPublicacao - @ViewBag.livro.Autor</p>
+</div>
+
