@@ -1,0 +1,57 @@
+﻿@model List<Fiap.Apostila08.MVC.Web.Models.Consulta>
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Lista de Consultas</h2>
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>Data</th>
+        <th>Local</th>
+        <th>Especialidade</th>
+        <th>Paciente</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Data</td>
+            <td>@item.Local</td>
+            <td>@item.Especialidade</td>
+            <td>@item.Paciente.Nome</td>
+            <td>
+                @Html.ActionLink(" ", "Editar", new { id = item.ConsultaId },
+                    new { @class = "btn btn-info glyphicon glyphicon-pencil" })
+                <button onclick="idConsulta.value=@item.ConsultaId" type="button" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#myModal"></button>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                Deseja excluir a consulta?
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("Excluir","Consulta"))
+                {
+                    <input type="hidden" id="idConsulta" name="consultaId" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
