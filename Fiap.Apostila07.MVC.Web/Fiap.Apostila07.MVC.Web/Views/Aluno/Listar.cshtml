@@ -1,0 +1,27 @@
+﻿@model List<Fiap.Apostila07.MVC.Web.Models.Aluno>
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Alunos Registrados</h2>
+
+@using (Html.BeginForm("Buscar", "Aluno", FormMethod.Get, new { @class = "form-inline", id = "formulario" }))
+{ 
+    @Html.DropDownList("Codigo", ViewBag.opcoes as SelectList, new { @class = "form-control" , onchange = "formulario.submit()" })
+    <input type="submit" value="Buscar" class="btn btn-success"/>
+}
+<hr />
+<table class="table table-striped">
+    <tr>
+        <th>Nome</th>
+        <th>Grupo</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.GrupoAm.Nome</td>
+        </tr>
+    }
+</table>
+

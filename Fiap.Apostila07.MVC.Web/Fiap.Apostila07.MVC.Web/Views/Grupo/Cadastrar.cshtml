@@ -1,0 +1,43 @@
+﻿@model Fiap.Apostila07.MVC.Web.Models.GrupoAm
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastro de Grupo de AM</h2>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Grupo AM</legend>
+        <div class="form-group">
+            @Html.LabelFor(g => g.Nome)
+            @Html.TextBoxFor(g => g.Nome, new { @class = "form-control"})
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Projeto AM</legend>
+        <div class="form-group">
+            @Html.LabelFor(g => g.Projeto.Titulo)
+            @Html.TextBoxFor(g => g.Projeto.Titulo, new { @class = "form-control"})
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(g => g.Projeto.DataEntrega)
+            @Html.TextBoxFor(g => g.Projeto.DataEntrega, new { @class = "form-control"})
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(g => g.Projeto.Tema)
+            @Html.TextAreaFor(g => g.Projeto.Tema, new { @class = "form-control"})
+        </div>
+    </fieldset>
+    <div class="form-group">
+        <input type="submit" value="Salvar" class="btn btn-primary" />
+    </div>
+}
+

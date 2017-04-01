@@ -1,0 +1,25 @@
+﻿@model List<Fiap.Apostila07.MVC.Web.Models.GrupoAm>
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Lista de Grupos de AM</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>Nome</th>
+        <th>Projeto</th>
+        <th>Tema</th>
+        <th>Data de Entrega</th>        
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.Projeto.Titulo</td>
+            <td>@item.Projeto.Tema</td>
+            <td>@item.Projeto.DataEntrega.ToShortDateString()</td>
+        </tr>
+    }
+</table>
+
